@@ -1,0 +1,17 @@
+{
+  "name": "tmb-daemon",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "agenda": "^1.0.1",
+    "amqplib": "^0.5.1",
+    "debug": "~2.6.0",
+    "moment": "^2.19.1",
+    "mongodb": "^2.2.26",
+    "request": "^2.83.0",
+    "socket.io": "^2.0.3"
+  }
+}
