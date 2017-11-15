@@ -19,7 +19,7 @@ async function getDataTMB() {
             }else {
                 let json = JSON.parse(body);
                 let busLocs=json.buswaytracking;
-                console.log(busLocs.length());
+                console.log(busLocs.length);
                 for (let busloc of busLocs) {
                     let insertHistoryStatus=tmbModel.insertToTMBTrackerHistory(busloc);
                     console.log(insertHistoryStatus);
