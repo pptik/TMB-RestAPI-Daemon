@@ -7,7 +7,7 @@ let id = require('moment/locale/id');
 let dateFormat="YYYY-MM-DD HH:mm:ss";
 exports.insertToTMBTrackerHistory= (query)=> {
     return new Promise((resolve, reject)=>{
-        let gpstrackerdate=moment(query.gpsdatetime,dateFormat,'id');
+        let gpstrackerdate=moment(query.gpsdatetime,dateFormat,id);
         let tmbQuery = {
             buscode:query.buscode,
             koridor:query.koridor,
