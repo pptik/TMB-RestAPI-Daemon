@@ -21,8 +21,7 @@ async function getDataTMB() {
                 let busLocs=json.buswaytracking;
                 console.log(busLocs.length);
                 for (let busloc of busLocs) {
-                    let insertHistoryStatus=tmbModel.insertToTMBTrackerHistory(busloc);
-                    console.log(insertHistoryStatus);
+                    tmbModel.insertToTMBTrackerHistory(busloc);
                 }
             }
         });
