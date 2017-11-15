@@ -20,6 +20,7 @@ async function getDataTMB() {
             }else {
                 let json = JSON.parse(body);
                 console.log(json);
+                console.log(json.length());
             }
         });
     }catch (err){
