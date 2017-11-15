@@ -1,5 +1,4 @@
-let withdrawalModel=require('../model/withdrawal_model');
-let topupModel=require('../model/topup_model');
+let tmbModel=require('../model/tmb_model');
 const request = require('request');
 const TMBRestAPIUri=require('../setup/tsconfig.json').TMBRestAPIUri;
 
@@ -19,8 +18,12 @@ async function getDataTMB() {
                 console.log(err)
             }else {
                 let json = JSON.parse(body);
-                console.log(json);
-                console.log(json.length());
+                let busLocs=json.buswaytracking;
+                console.log(busLocs.length());
+                for (let busloc of busLocs) {
+                    let insertHistoryStatus=tmbModel.insertToTMBTrackerHistory(busloc);
+                    console.log(insertHistoryStatus);
+                }
             }
         });
     }catch (err){
