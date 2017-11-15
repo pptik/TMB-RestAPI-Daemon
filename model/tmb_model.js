@@ -40,7 +40,7 @@ exports.updateToTMBTracker= (query)=> {
             created_at:new Date(),
             updated_at:new Date()
         };
-        tmbTracker.updateOne({buscode:query.buscode},{$set:tmbQuery},function (err,result) {
+        tmbTracker.updateOne({buscode:query.buscode},{$set:tmbQuery},{ upsert: true },function (err,result) {
             if(err)reject(false);
             else resolve(true);
         });
