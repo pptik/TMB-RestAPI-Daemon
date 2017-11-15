@@ -22,7 +22,7 @@ async function getDataTMB() {
                 console.log(busLocs.length);
                 for (let busloc of busLocs) {
                     tmbModel.insertToTMBTrackerHistory(busloc);
-                    console.log(moment("2017-11-15T18:09:08.000+0000").format('LTS'));
+                    tmbModel.updateToTMBTracker(busloc);
                 }
             }
         });

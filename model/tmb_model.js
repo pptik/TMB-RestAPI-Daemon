@@ -26,3 +26,23 @@ exports.insertToTMBTrackerHistory= (query)=> {
         });
     });
 };
+exports.updateToTMBTracker= (query)=> {
+    return new Promise((resolve, reject)=>{
+        let gpstrackerdate=moment(query.gpsdatetime,dateFormat,'id');
+        let tmbQuery = {
+            koridor:query.koridor,
+            course:query.course,
+            gpsdatetime:gpstrackerdate.toDate(),
+            location:{
+                type:"Point",
+                coordinates:[parseFloat(query.longitude), parseFloat(query.latitude)]
+            },
+            created_at:new Date(),
+            updated_at:new Date()
+        };
+        tmbTracker.updateOne({buscode:query.buscode},{$set:tmbQuery},function (err,result) {
+            if(err)reject(false);
+            else resolve(true);
+        });
+    });
+};
