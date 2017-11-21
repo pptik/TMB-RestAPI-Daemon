@@ -33,6 +33,7 @@ exports.updateToTMBTracker= (query)=> {
             koridor:query.koridor,
             course:query.course,
             gpsdatetime:gpstrackerdate.toDate(),
+            rawgpsdatetime:query.gpsdatetime,
             location:{
                 type:"Point",
                 coordinates:[parseFloat(query.longitude), parseFloat(query.latitude)]
