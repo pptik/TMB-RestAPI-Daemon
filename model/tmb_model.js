@@ -42,17 +42,17 @@ exports.updateToTMBTracker = (query) => {
     return new Promise((resolve, reject) => {
         let gpstrackerdate = moment(query.gpsdatetime, dateFormat, 'id')
         let tmbQuery = {
-            plat_id: query.buscode.replace(" ", ""),
+            plat_id: query.buscode.replace(/ /g, ""),
             type: 'Trans Metro Bandung',
             trayek_id: 'N/A',
-            name: query.koridor,
+            name: minimizeName(query.koridor),
             city_id: "022",
             driver_name: 'N/A',
             trip_status: 0,
             time: gpstrackerdate.toDate(),
             device_phone_number: 'N/A',
             driver_phone_number: 'N/A',
-            device_id: "tmb_unit_" + query.buscode.replace(" ", ""),
+            device_id: "tmb_unit_" + query.buscode.replace(/ /g, ""),
             location: {
                 type: "Point",
                 coordinates: [parseFloat(query.longitude), parseFloat(query.latitude)]
@@ -68,4 +68,12 @@ exports.updateToTMBTracker = (query) => {
             else resolve(true)
         })
     })
+}
+
+
+minimizeName = (name) => {
+    name = name.replace(/,/g, " ");
+    name = Array.from(new Set(name.split(' '))).toString();
+    name = name.replace(/,/g, " ")
+    return name
 }
